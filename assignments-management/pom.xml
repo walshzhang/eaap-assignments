@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>iteach.eaap.assignments</groupId>
-    <artifactId>assignment-management</artifactId>
+    <artifactId>assignments-management</artifactId>
     <version>0.0.1</version>
-    <name>assignment-management</name>
+    <name>assignments-management</name>
     <description>作业管理服务</description>
 
     <properties>

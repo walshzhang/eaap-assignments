@@ -1,0 +1,7 @@
+POST http://localhost:8080/submissions
+Content-Type: application/json
+
+{
+  "code": "printf('hello world');",
+  "assignment": "72aec62c-3a5c-49a2-86ce-ff012787119a"
+}
