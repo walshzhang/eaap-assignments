@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  submission-mysql:
+    image: 'mysql:8'
+    container_name: submissions-db
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: submissions
+    volumes:
+      - .:/docker-entrypoint-initdb.d
