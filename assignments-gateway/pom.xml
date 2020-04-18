@@ -11,7 +11,7 @@
     <groupId>iteach.eaap.assignments</groupId>
     <artifactId>api-gateway</artifactId>
     <version>0.1</version>
-    <name>api-gateway</name>
+    <name>assignments-gateway</name>
     <description>API 网关服务</description>
 
     <properties>
