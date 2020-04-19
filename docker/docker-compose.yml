@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  management-service:
+    image: 'assignment/management'
+    container_name: 'assignment-service'
+    ports:
+      - 39999:39999
+    depends_on:
+      - management-mysql
+  management-mysql:
+    image: 'mysql:8'
+    container_name: assignments-db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: assignments
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+
+  submission-service:
+    image: 'assignment/management'
+      container_name: 'submission-service'
+      ports:
+        - 8080:8080
+      depends_on:
+        - submission-mysql
+        - management-service
+  submission-mysql:
+    image: 'mysql:8'
+    container_name: submissions-db
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: submissions
+    volumes:
+      - .:/docker-entrypoint-initdb.d
