@@ -2,6 +2,7 @@ package iteach.eaap.assignments.submission.application;
 
 import java.util.List;
 
+import iteach.eaap.assignments.submission.application.port.outbound.QueryUserSubmissionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +14,10 @@ import lombok.AllArgsConstructor;
 @Transactional
 @AllArgsConstructor
 public class QueryUserSubmissionApplicationService implements QueryUserSubmissionUseCase {
-
+    QueryUserSubmissionRepository repository;
 	@Override
 	public List<Submission> queryAll(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.queryAllByUserId(userId);
 	}
 
 }

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,5 +23,10 @@ public class Submission {
 	private String code;
 	private String user;
 	private LocalDateTime datetime;
+	@JsonIgnore
 	private String assignment;
+
+	public String getAssignmentId() {
+	    return assignment;
+    }
 }

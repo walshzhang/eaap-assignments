@@ -39,6 +39,7 @@ public class Assignment {
 		dto.setDeadline(deadline.value());
 		dto.setDescription(this.description);
 		dto.setId(id.value());
+		dto.setStatus(status.name());
 		return dto;
 	}
 	

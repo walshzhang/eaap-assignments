@@ -21,3 +21,6 @@ Content-Type: application/json
   "code": "printf('hello world');",
   "assignment": "484e90fd-f20f-4bb9-85f0-86c6ba560756"
 }
+
+###
+GET http://localhost:8080/api/submissions

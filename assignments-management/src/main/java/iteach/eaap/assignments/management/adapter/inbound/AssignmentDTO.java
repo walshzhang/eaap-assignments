@@ -19,4 +19,5 @@ public class AssignmentDTO {
 	@Future
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime deadline;
+	private String status;
 }

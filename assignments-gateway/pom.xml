@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>iteach.eaap.assignments</groupId>
-    <artifactId>api-gateway</artifactId>
+    <artifactId>assignments-gateway</artifactId>
     <version>0.1</version>
     <name>assignments-gateway</name>
     <description>API 网关服务</description>
@@ -23,6 +23,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <dependency>

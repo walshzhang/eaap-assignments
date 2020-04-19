@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface JpaQueryUserSubmissionRepository extends QueryUserSubmissionRepository, JpaRepository<Submission, String> {
     @Override
-    default List<Submission> queryAllByUserId(String assignmentId) {
-        return findAllByUser(assignmentId);
+    default List<Submission> queryAllByUserId(String userId) {
+        return findAllByUser(userId);
     }
 
     List<Submission> findAllByUser(String assignmentId);

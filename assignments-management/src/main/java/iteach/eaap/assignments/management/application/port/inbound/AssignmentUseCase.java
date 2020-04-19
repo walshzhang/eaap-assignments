@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface AssignmentUseCase {
 	String createAssignment(AssignmentDTO assignment);
+
 	List<AssignmentDTO> getAllAssignments();
+
 	void publishAssignments(String id);
 
 	void closeAssignment(String id);
@@ -14,4 +16,6 @@ public interface AssignmentUseCase {
 	void removeAssignment(String id);
 
 	String statusOf(String id);
+
+	AssignmentDTO getAssignment(String id);
 }

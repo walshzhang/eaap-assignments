@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
 @AllArgsConstructor
 class AssignmentController {
 	private final AssignmentUseCase usecase;
@@ -31,6 +30,11 @@ class AssignmentController {
 	@GetMapping("/assignments")
 	List<AssignmentDTO> getAllAssignments() {
 		return usecase.getAllAssignments();
+	}
+
+	@GetMapping("/assignments/{id}")
+	AssignmentDTO getAssignment(@PathVariable String id) {
+		return usecase.getAssignment(id);
 	}
 
 	@PutMapping("/assignments/publish/{id}")

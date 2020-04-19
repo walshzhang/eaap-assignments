@@ -71,4 +71,9 @@ class AssignmentApplicationService implements AssignmentUseCase {
 		return assignmentFor(id).status().toString();
 	}
 
+	@Override
+	public AssignmentDTO getAssignment(String id) {
+		Assignment assignment = assignmentFor(id);
+		return assignment.makeAssignmentDTO();
+	}
 }

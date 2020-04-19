@@ -1,7 +1,10 @@
-POST http://localhost:8080/submissions
+POST http://localhost:29999/submissions
 Content-Type: application/json
 
 {
   "code": "printf('hello world');",
   "assignment": "72aec62c-3a5c-49a2-86ce-ff012787119a"
 }
+
+###
+GET http://localhost:29999/submissions
