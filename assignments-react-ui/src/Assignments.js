@@ -58,7 +58,7 @@ export default function Assignments() {
   }
 
   const publish = function (assignment) {
-    fetch(`http://localhost:8080/api/assignments/publish/${assignment.id}`, {
+    fetch(`http://localhost:9999/api/assignments/publish/${assignment.id}`, {
       method: 'put'
     }).then(response => {
       setSnack({...snack, open: true, level: 'success', message: '发布成功'})
@@ -72,7 +72,7 @@ export default function Assignments() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8080/api/assignments");
+      const response = await fetch("http://localhost:9999/api/assignments");
       const assignments = await response.json();
       setAssignments(assignments);
     }

@@ -8,10 +8,10 @@ function addAssignment(data) {
   data = {
     title: "string",
     description: "string",
-    deadline: "2020-04-20 08:32:23"
+    deadline: "2020-04-30 08:32:23"
   }
 
-  return fetch('http://localhost:8080/api/assignments', {
+  return fetch('http://localhost:9999/api/assignments', {
     method: 'post',
     headers: {
       'content-type': 'application/json'

@@ -7,3 +7,5 @@ spring:
             allowedOrigins: "*"
             allowedMethods: "*"
             allowedHeaders: "*"
+server:
+  port: 9999

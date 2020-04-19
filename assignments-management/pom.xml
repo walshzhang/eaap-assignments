@@ -60,4 +60,14 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>maven-ali</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public//</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
 </project>
