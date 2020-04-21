@@ -2,63 +2,45 @@ version: '3'
 
 services:
   gateway-service:
-    build:
-      context: ../assignments-gateway
-      dockerfile: docker/Dockerfile
+    build: ../assignments-gateway/docker
     image: 'assignments/gateway'
-    container_name: 'assignments-gateway'
     ports:
-      - 9999:9999
-    depends_on:
+      - 19999:19999
+    links:
       - submission-service
       - management-service
   management-service:
-    build:
-      context: ../assignments-management
-      dockerfile: docker/Dockerfile
+    build: ../assignments-management/docker
     image: 'assignments/management'
-    container_name: 'assignments-management-service'
-    ports:
-      - 39999:39999
     depends_on:
       - management-mysql
   management-mysql:
-    build:
-      context: ../assignments-management
     image: 'mysql:8'
-    container_name: assignments-db
-    ports:
-      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: assignments
-    volumes:
-      - ./docker:/docker-entrypoint-initdb.d
-  submission-service:
-    build: ../assignments-submission
-    image: 'assignments/submission'
-    container_name: 'assignments-submission-service'
     ports:
-      - 9999:9999
+      - 3306:3306
+    volumes:
+      - ../assignments-management/docker:/docker-entrypoint-initdb.d
+  submission-service:
+    build: ../assignments-submission/docker
+    image: 'assignments/submission'
     depends_on:
       - submission-mysql
-      - management-service
   submission-mysql:
-    build: ../assignments-submission
     image: 'mysql:8'
-    container_name: submissions-db
-    ports:
-      - 3307:3306
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: submissions
+    ports:
+      - 3307:3306
     volumes:
-      - ./docker:/docker-entrypoint-initdb.d
+      - ../assignments-submission/docker:/docker-entrypoint-initdb.d
   assignments-ui:
-    build:
-      context: ../assignments-react-ui
-      dockerfile: docker/Dockerfile
-    container_name: 'assignments-react-ui'
+    build: ../assignments-react-ui/docker
     image: 'assignments/react-ui'
+    depends_on:
+      - gateway-service
     ports:
       - 80:80

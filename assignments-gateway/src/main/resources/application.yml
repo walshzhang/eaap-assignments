@@ -8,4 +8,4 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
 server:
-  port: 9999
+  port: 19999

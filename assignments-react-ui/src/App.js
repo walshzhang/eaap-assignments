@@ -18,7 +18,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems} from './listItems';
 import Assignments from './Assignments';
 import NewAssignment from './NewAssignment'
-import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+import {HashRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -156,11 +156,13 @@ export default function App() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Route path={'/assignments'} component={Assignments} exact={true}/>
-                <Route path={'/assignments/new'} component={NewAssignment} exact={true}/>
-                <Route path={''}  exact={true} render={()=>(
-                  <Redirect to={"/assignments"} />
-                )}/>
+                <Switch>
+                  <Route path={'/assignments'} component={Assignments} exact={true}/>
+                  <Route path={'/assignments/new'} component={NewAssignment} exact={true}/>
+                  <Route path={''} exact={true} render={() => (
+                    <Redirect to={"/assignments"}/>
+                  )}/>
+                </Switch>
               </Grid>
             </Grid>
           </Container>

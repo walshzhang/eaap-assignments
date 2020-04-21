@@ -23,7 +23,6 @@ public class Submission {
 	private String code;
 	private String user;
 	private LocalDateTime datetime;
-	@JsonIgnore
 	private String assignment;
 
 	public String getAssignmentId() {

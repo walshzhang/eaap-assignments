@@ -1,26 +1,26 @@
-POST http://localhost:8080/api/assignments
+POST http://localhost:19999/api/assignments
 Content-Type: application/json
 
 {
   "title": "assignment title from api gateway",
   "description": "assignment description from gateway",
-  "deadline": "2020-04-20 08:32:23"
+  "deadline": "2020-04-30 08:32:23"
 }
 
 ###
 GET http://localhost:8080/api/assignments/484e90fd-f20f-4bb9-85f0-86c6ba560756/status
 
 ###
-PUT http://localhost:8080/api/assignments/publish/484e90fd-f20f-4bb9-85f0-86c6ba560756
+PUT http://localhost:19999/api/assignments/publish/feb5949c-23ab-4152-ab4d-36579f2181ad
 
 ###
-POST http://localhost:8080/api/submissions
+POST http://localhost:19999/api/submissions
 Content-Type: application/json
 
 {
   "code": "printf('hello world');",
-  "assignment": "484e90fd-f20f-4bb9-85f0-86c6ba560756"
+  "assignment": "feb5949c-23ab-4152-ab4d-36579f2181ad"
 }
 
 ###
-GET http://localhost:8080/api/submissions
+GET http://localhost:19999/api/submissions

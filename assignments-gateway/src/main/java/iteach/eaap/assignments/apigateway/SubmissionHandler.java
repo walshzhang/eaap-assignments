@@ -18,12 +18,10 @@ public class SubmissionHandler {
                 .uri("http://localhost:29999/submissions")
                 .exchange()
                 .flatMapMany(resp -> resp.bodyToFlux(Submission.class));
-        submissions.subscribe(System.out::println);
         Flux<Assignment> assignments = WebClient.create().get()
                 .uri("http://localhost:39999/assignments")
                 .exchange()
                 .flatMapMany(resp -> resp.bodyToFlux(Assignment.class));
-//        assignments.subscribe(System.out::println);
         submissions = submissions.map(submission -> {
             if (submission.getAssignmentId() == null) {
                 return submission;
