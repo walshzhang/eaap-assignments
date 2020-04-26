@@ -8,10 +8,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/api/assignments/484e90fd-f20f-4bb9-85f0-86c6ba560756/status
+GET http://localhost:19999/api/assignments/{{assignmentId}}/status
 
 ###
-PUT http://localhost:19999/api/assignments/publish/feb5949c-23ab-4152-ab4d-36579f2181ad
+PUT http://localhost:19999/api/assignments/publish/{{assignmentId}}
 
 ###
 POST http://localhost:19999/api/submissions
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "code": "printf('hello world');",
-  "assignment": "feb5949c-23ab-4152-ab4d-36579f2181ad"
+  "assignment": "{{assignmentId}}"
 }
 
 ###

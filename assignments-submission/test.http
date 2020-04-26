@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "code": "printf('hello world');",
-  "assignment": "72aec62c-3a5c-49a2-86ce-ff012787119a"
+  "assignment": "8d0cca56-eb9f-4f7d-a9b3-b037150f77e1"
 }
 
 ###

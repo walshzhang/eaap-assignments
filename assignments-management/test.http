@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:39999/assignments/0845dfd7-ff80-4ac1-98c7-3864f0470686/status
+GET http://localhost:39999/assignments/8d0cca56-eb9f-4f7d-a9b3-b037150f77e1/status
 
 ###
-PUT http://localhost:39999/assignments/publish/72aec62c-3a5c-49a2-86ce-ff012787119a
+PUT http://localhost:39999/assignments/publish/8d0cca56-eb9f-4f7d-a9b3-b037150f77e1

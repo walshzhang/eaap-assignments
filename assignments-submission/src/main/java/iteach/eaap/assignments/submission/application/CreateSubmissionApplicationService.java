@@ -1,6 +1,8 @@
 package iteach.eaap.assignments.submission.application;
 
 import iteach.eaap.assignments.submission.application.port.outbound.CreateSubmissionRepository;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -22,7 +24,7 @@ class CreateSubmissionApplicationService implements CreateSubmissionUseCase {
 
 	@Override
 	public void createSubmission(Submission submission) {
-		String url = "http://localhost:39999/assignments/" + submission.getAssignment() + "/status";
+		String url = "http://assignments-management/assignments/" + submission.getAssignment() + "/status";
 		String status = restTemplate.getForObject(url, String.class);
 
 		assert status != null;

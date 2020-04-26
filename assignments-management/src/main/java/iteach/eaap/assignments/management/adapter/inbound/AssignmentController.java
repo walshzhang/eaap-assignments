@@ -2,11 +2,13 @@ package iteach.eaap.assignments.management.adapter.inbound;
 
 import iteach.eaap.assignments.management.application.port.inbound.AssignmentUseCase;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -53,7 +55,14 @@ class AssignmentController {
 	}
 
 	@GetMapping("/assignments/{id}/status")
-	String getAssignmentStatus(@PathVariable String id) {
+	String getAssignmentStatus(@PathVariable String id,
+                               HttpServletRequest request) {
+        System.out.println(request.getServerPort());
 		return usecase.statusOf(id);
 	}
+
+	@GetMapping("/dburl")
+    String getMysqlUrl(@Value("${spring.datasource.url}") String url) {
+	    return url;
+    }
 }

@@ -4,43 +4,57 @@ services:
   gateway-service:
     build: ../assignments-gateway/docker
     image: 'assignments/gateway'
+    container_name: gateway-service
     ports:
       - 19999:19999
-    links:
+    depends_on:
       - submission-service
       - management-service
   management-service:
     build: ../assignments-management/docker
     image: 'assignments/management'
+    container_name: management-service
+    depends_on:
+      - management-mysql
+  management-service02:
+    build: ../assignments-management/docker
+    image: 'assignments/management'
+    container_name: management-service02
     depends_on:
       - management-mysql
   management-mysql:
     image: 'mysql:8'
+    container_name: management-mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: assignments
-    ports:
-      - 3306:3306
     volumes:
-      - ../assignments-management/docker:/docker-entrypoint-initdb.d
+      - ../assignments-management/docker/schema:/docker-entrypoint-initdb.d
   submission-service:
     build: ../assignments-submission/docker
     image: 'assignments/submission'
+    container_name: submission-service
     depends_on:
       - submission-mysql
   submission-mysql:
     image: 'mysql:8'
+    container_name: submission-mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: submissions
-    ports:
-      - 3307:3306
     volumes:
-      - ../assignments-submission/docker:/docker-entrypoint-initdb.d
+      - ../assignments-submission/docker/schema:/docker-entrypoint-initdb.d
   assignments-ui:
     build: ../assignments-react-ui/docker
     image: 'assignments/react-ui'
+    container_name: react-ui
     depends_on:
       - gateway-service
     ports:
       - 80:80
+
+networks:
+  default:
+    external:
+      name: assignments
+

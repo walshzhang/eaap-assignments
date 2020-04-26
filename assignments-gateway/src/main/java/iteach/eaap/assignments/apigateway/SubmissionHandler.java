@@ -15,11 +15,11 @@ public class SubmissionHandler {
     // 由于使用了反应式异步编程，可同时获取多项数据
     public Mono<ServerResponse> getSubmissions(ServerRequest serverRequest) {
         Flux<Submission> submissions = WebClient.create().get()
-                .uri("http://localhost:29999/submissions")
+                .uri("http://submission-service:29999/submissions")
                 .exchange()
                 .flatMapMany(resp -> resp.bodyToFlux(Submission.class));
         Flux<Assignment> assignments = WebClient.create().get()
-                .uri("http://localhost:39999/assignments")
+                .uri("http://management-service:39999/assignments")
                 .exchange()
                 .flatMapMany(resp -> resp.bodyToFlux(Assignment.class));
         submissions = submissions.map(submission -> {
