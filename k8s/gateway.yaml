@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  labels:
+    app: gateway
+spec:
+  selector:
+    matchLabels:
+      app: gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: assignments/gateway
+          imagePullPolicy: Never
+          args: ["--spring.config.location=application.yaml"]
+          ports:
+            - containerPort: 39999
+          volumeMounts:
+            - mountPath: /app/application.yaml
+              name: management-config
+              subPath: application.yaml
+      volumes:
+        - name: management-config
+          configMap:
+            name: management-config
+            items:
+              - key: application.yaml
+                path: application.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+spec:
+  type: NodePort
+  ports:
+    - port: 19999
+      targetPort: 19999
+      nodePort: 30000
+  selector:
+    app: gateway
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+data:
+  application.yaml: |
+    spring:
+      cloud:
+        gateway:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowedMethods: "*"
+                allowedHeaders: "*"
+        nacos:
+          discovery:
+            server-addr: nacos-server:8848
+    server:
+      port: 19999

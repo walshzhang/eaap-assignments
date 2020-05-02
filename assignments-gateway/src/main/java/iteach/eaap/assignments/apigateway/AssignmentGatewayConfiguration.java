@@ -19,12 +19,12 @@ public class AssignmentGatewayConfiguration {
                 .route("assignment management service", predicate -> predicate
                         .path("/api/assignments", "/api/assignments/**")
                         .filters(filter -> filter.stripPrefix(1))
-                        .uri("http://management-service:39999"))
+                        .uri("http://management:39999"))
                 .route("assignment submission service", predicate -> predicate
                         .path("/api/submissions").and()
                         .method(HttpMethod.POST)
                         .filters(filter -> filter.stripPrefix(1))
-                        .uri("http://submission-service:29999"))
+                        .uri("http://submission:29999"))
                 .build();
     }
 

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: management
+  labels:
+    app: management
+spec:
+  selector:
+    matchLabels:
+      app: management
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: management
+    spec:
+      containers:
+        - name: management
+          image: assignments/management
+          imagePullPolicy: Never
+          args: ["--spring.config.location=application.properties"]
+          ports:
+            - containerPort: 39999
+          volumeMounts:
+            - mountPath: /app/application.properties
+              name: management-config
+              subPath: application.properties
+      volumes:
+        - name: management-config
+          configMap:
+            name: management-config
+            items:
+              - key: application.properties
+                path: application.properties
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: management
+spec:
+  ports:
+    - port: 39999
+      targetPort: 39999
+  selector:
+    app: management
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: management-config
+data:
+  application.properties: |
+    spring.datasource.url=jdbc:mysql://management-mysql:3306/assignments
+    spring.datasource.username=root
+    spring.datasource.password=root
+    server.port=39999
