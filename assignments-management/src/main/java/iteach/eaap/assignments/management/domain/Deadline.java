@@ -14,10 +14,11 @@ public class Deadline {
 	@Column(name = "deadline")
 	private LocalDateTime datetime;
 
+	// JPA
 	public Deadline() {}
 	
 	public Deadline(LocalDateTime datetime) {
-		this.datetime = datetime;
+		this.datetime(datetime);
 	}
 	
 	/**
@@ -33,9 +34,11 @@ public class Deadline {
 		if(datetime.isAfter(aWeekLater)) {
 			throw new AssignmentDeadlineException("作业截止日期不能超过一周");
 		}
+
+		this.datetime = datetime;
 	}
 	
-	public boolean isExpired() {		
+	public boolean isExpired() {
 		return this.datetime.isBefore(LocalDateTime.now());
 	}
 	

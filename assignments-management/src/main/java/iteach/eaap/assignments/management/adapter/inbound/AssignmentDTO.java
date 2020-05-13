@@ -14,7 +14,6 @@ public class AssignmentDTO {
 	@NotBlank
 	private String title;
 	@NotBlank
-	@Size(min = 100)
 	private String description;
 	@Future
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

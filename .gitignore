@@ -1,1 +1,4 @@
 .idea/
+/assignments-management/docker/app.jar
+/assignments-gateway/docker/app.jar
+/assignments-submission/docker/app.jar

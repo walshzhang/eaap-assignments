@@ -62,8 +62,4 @@ public class Assignment {
 		
 		return status;
 	}
-
-	public void changeStatus(Status newStatus) {
-		this.status = this.status.changeTo(newStatus);
-	}
 }

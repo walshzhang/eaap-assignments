@@ -48,21 +48,21 @@ class AssignmentApplicationService implements AssignmentUseCase {
 	@Override
 	public void publishAssignments(String id) {
 		Assignment assignment = assignmentFor(id);
-		assignment.changeStatus(Status.PUBLISHED);
+		assignment.publish();
 		repository.update(assignment);
 	}
 
 	@Override
 	public void closeAssignment(String id) {
 		Assignment assignment = assignmentFor(id);
-		assignment.changeStatus(Status.CLOSED);
+		assignment.close();
 		repository.update(assignment);
 	}
 
 	@Override
 	public void removeAssignment(String id) {
 		Assignment assignment = assignmentFor(id);
-		assignment.changeStatus(Status.REMOVED);
+		assignment.remove();
 		repository.update(assignment);
 	}
 

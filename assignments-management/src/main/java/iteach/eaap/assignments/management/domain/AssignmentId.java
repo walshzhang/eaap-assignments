@@ -32,9 +32,4 @@ public class AssignmentId implements Serializable {
 	public String value() {
 		return this.value;
 	}
-	
-	public AssignmentId nextId() {
-		return new AssignmentId();
-	}
-	
 }
