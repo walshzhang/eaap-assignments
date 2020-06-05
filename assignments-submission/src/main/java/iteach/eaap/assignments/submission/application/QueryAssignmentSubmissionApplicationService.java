@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @Transactional
 @AllArgsConstructor
 class QueryAssignmentSubmissionApplicationService implements QueryAssignmentSubmissionUseCase{
-	private QueryAssignmentSubmissionRepository repository;
+	private final QueryAssignmentSubmissionRepository repository;
 	
 	@Override
 	public List<Submission> querySubmissions(String assignmentId) {

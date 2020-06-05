@@ -35,7 +35,7 @@ class AssignmentControllerIntegrationTest {
     @Test
     @Order(2)
     void test_create_assignment() throws Exception {
-        String json = "{\"title\": \"title from test\", \"description\": \"description from test\", \"deadline\": \"2020-05-15 00:00:00\"}";
+        String json = "{\"title\": \"title from test2\", \"description\": \"description from test\", \"deadline\": \"2020-05-17 00:00:00\"}";
         MvcResult result = mockMvc.perform(
                 post("/assignments")
                         .content(json)

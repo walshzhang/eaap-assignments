@@ -27,6 +27,7 @@ public class AssignmentRepositoryIntegrationTest {
 
     // fake object
     @Test
+    @DisplayName("测试 queryAll 方法")
     void test_query_all() {
         List<Assignment> list = repository.queryAll();
         Assertions.assertTrue(list.isEmpty());
